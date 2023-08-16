@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "poe-oauth-demo"
+version = "0.1.0"
+description = ""
+authors = ["Kafonek <matt.kafonek@noteable.io>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.101.1"
+httpx = "^0.24.1"
+authlib = "^0.15.2"
+pydantic = { version = "<2", extras = ["dotenv"] }
+uvicorn = "^0.15.0"
+structlog = "^23.1.0"
+noteable-origami = { version = "^1.0.0a", allow-prereleases = true }
+
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.12.0"
+black = "^23.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
