@@ -52,7 +52,7 @@ async def auth0_callback(code: str):
             },
         )
     logger.info("Auth0 token response", status_code=resp.status_code)
-    print(resp.json())
+    # print / log resp.json() here to see access token, id token and other payload info
     if resp.status_code == 200:
         token_data = resp.json()
         jwt = token_data.get("access_token")

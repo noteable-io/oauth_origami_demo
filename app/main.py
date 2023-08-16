@@ -6,7 +6,6 @@ import httpx
 import structlog
 from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.responses import RedirectResponse
-from fastapi.routing import APIRouter
 from origami.clients.api import APIClient
 from origami.models.api.files import File
 from origami.models.api.users import User
@@ -19,8 +18,7 @@ from app.settings import settings
 logger = structlog.get_logger(__name__)
 
 app = FastAPI()
-
-router = APIRouter()
+app.include_router(auth_router, tags=["auth"], include_in_schema=False)
 
 
 @app.get("/")
@@ -93,7 +91,3 @@ async def logout(request: Request):
     if request.cookies.get("noteable_jwt"):
         response.delete_cookie("noteable_jwt")
     return response
-
-
-app.include_router(auth_router, tags=["auth"], include_in_schema=False)
-app.include_router(router)
