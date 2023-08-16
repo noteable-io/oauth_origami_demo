@@ -83,7 +83,7 @@ async def run_all(file_id: uuid.UUID, api_client: APIClient = Depends(api_client
     return rtu_client.builder.nb
 
 
-@app.get("/logout")
+@app.get("/logout", include_in_schema=False)
 async def logout(request: Request):
     """Log user out of Auth0 so they can try login flow again"""
     url = f"https://{settings.AUTH0_DOMAIN}/v2/logout?returnTo=http://localhost:8000/"

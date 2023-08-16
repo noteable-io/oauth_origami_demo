@@ -20,7 +20,6 @@ async def bearer_token(request: Request) -> str:
     if request.cookies.get("noteable_jwt"):
         jwt = request.cookies.get("noteable_jwt")
         logger.info(f"Found Authorization cookie with jwt {jwt[:5]}...")
-        print(jwt)
         return jwt
     logger.info("No Authorization header/cookie found, redirecting to /auth0/login")
     raise HTTPException(status_code=307, headers={"Location": "/auth0/login"})
