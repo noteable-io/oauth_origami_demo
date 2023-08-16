@@ -34,7 +34,11 @@ async def auth0_login():
 @auth_router.get("/auth0/callback")
 async def auth0_callback(code: str):
     """
-    Step 1.5 of auth0 login process, auth0 has redirected user back to us. Now we POST to get jwt
+    Step 2 of auth0 login process.
+     - we redirected to auth0
+     - auth0 redirected back to us with a code
+     - we post to auth0 with client id / secret / code and get access_token / id_token
+     - set access_token as cookie for user
     """
     # Optional extra security: check that state in url params matched state you sent out
     # Not done here to keep code minimal
