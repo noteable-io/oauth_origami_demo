@@ -40,8 +40,8 @@ async def get_current_user(api_client: APIClient = Depends(api_client)) -> User:
         )
 
 
-@app.get("/projects")
-async def list_projects(
+@app.get("/project_files")
+async def list_project_files(
     project_id: Optional[uuid.UUID] = None, api_client: APIClient = Depends(api_client)
 ) -> List[File]:
     """List all projects in a file, or in the Users default origamist project"""
